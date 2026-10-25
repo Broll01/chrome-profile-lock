@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "Chrome Profile Lock",
+  "version": "2.0.0",
+  "description": "PIN / password lock for this Chrome profile with smart auto-lock, session protection and activity log",
+  "permissions": [
+    "storage",
+    "windows",
+    "tabs",
+    "alarms",
+    "idle"
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_title": "Chrome Profile Lock",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "options_page": "options.html",
+  "commands": {
+    "lock-profile": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+L",
+        "mac": "Command+Shift+L"
+      },
+      "description": "Lock this Chrome profile"
+    }
+  }
+}

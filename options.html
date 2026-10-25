@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Profile Lock Settings</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="options-page">
+  <main class="settings-card">
+    <div class="brand">
+      <div class="logo" aria-hidden="true">🔒</div>
+      <div>
+        <h1>Profile Lock Settings</h1>
+        <p class="muted">Protect this Chrome profile while you are away.</p>
+      </div>
+    </div>
+
+    <!-- ===== Credentials ===== -->
+    <section>
+      <h2 id="credTitle">PIN &amp; Password</h2>
+
+      <div id="currentBox" hidden>
+        <p class="muted">Confirm your current credentials to change them.</p>
+
+        <div class="field" id="curPinField">
+          <label for="curPin">Current PIN</label>
+          <div class="input-group">
+            <input id="curPin" type="password" inputmode="numeric" maxlength="12" autocomplete="off">
+            <button type="button" class="reveal" data-target="curPin" aria-label="Show" aria-pressed="false">👁</button>
+          </div>
+        </div>
+
+        <div class="field" id="curPasswordField">
+          <label for="curPassword">Current password</label>
+          <div class="input-group">
+            <input id="curPassword" type="password" maxlength="128" autocomplete="off">
+            <button type="button" class="reveal" data-target="curPassword" aria-label="Show" aria-pressed="false">👁</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="newMode">Unlock method</label>
+        <select id="newMode">
+          <option value="pin">PIN only</option>
+          <option value="password">Password only</option>
+          <option value="both">Password + PIN (both required)</option>
+        </select>
+      </div>
+
+      <div id="newPinFields">
+        <div class="field">
+          <label for="newPin">New PIN (4–12 digits)</label>
+          <div class="input-group">
+            <input id="newPin" type="password" inputmode="numeric" maxlength="12" autocomplete="new-password">
+            <button type="button" class="reveal" data-target="newPin" aria-label="Show" aria-pressed="false">👁</button>
+          </div>
+        </div>
+        <div class="field">
+          <label for="confirmPin">Confirm PIN</label>
+          <div class="input-group">
+            <input id="confirmPin" type="password" inputmode="numeric" maxlength="12" autocomplete="new-password">
+            <button type="button" class="reveal" data-target="confirmPin" aria-label="Show" aria-pressed="false">👁</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="newPasswordFields">
+        <div class="field">
+          <label for="newPassword">New password (at least 6 characters)</label>
+          <div class="input-group">
+            <input id="newPassword" type="password" maxlength="128" autocomplete="new-password">
+            <button type="button" class="reveal" data-target="newPassword" aria-label="Show" aria-pressed="false">👁</button>
+          </div>
+        </div>
+        <div class="field">
+          <label for="confirmPassword">Confirm password</label>
+          <div class="input-group">
+            <input id="confirmPassword" type="password" maxlength="128" autocomplete="new-password">
+            <button type="button" class="reveal" data-target="confirmPassword" aria-label="Show" aria-pressed="false">👁</button>
+          </div>
+        </div>
+      </div>
+
+      <button id="saveCred" class="primary">Save</button>
+      <p id="credMessage" class="message" role="status" aria-live="polite"></p>
+    </section>
+
+    <!-- ===== Auto-lock ===== -->
+    <section>
+      <h2>Smart auto-lock</h2>
+
+      <label class="check">
+        <input type="checkbox" id="autoLockEnabled">
+        Lock after inactivity
+      </label>
+
+      <div class="field">
+        <label for="autoMinutes">Inactivity time</label>
+        <select id="autoMinutes">
+          <option value="1">1 minute</option>
+          <option value="2">2 minutes</option>
+          <option value="5">5 minutes</option>
+          <option value="10">10 minutes</option>
+          <option value="15">15 minutes</option>
+          <option value="30">30 minutes</option>
+          <option value="60">60 minutes</option>
+        </select>
+      </div>
+
+      <label class="check">
+        <input type="checkbox" id="lockOnStartup">
+        Lock when Chrome starts
+      </label>
+
+      <label class="check">
+        <input type="checkbox" id="lockOnScreenLock">
+        Lock when the computer screen is locked
+      </label>
+
+      <label class="check">
+        <input type="checkbox" id="lockOnSleep">
+        Lock after the computer wakes from sleep (best effort)
+      </label>
+
+      <h3>Scheduled lock</h3>
+
+      <label class="check">
+        <input type="checkbox" id="scheduleEnabled">
+        Lock automatically at specific times
+      </label>
+
+      <div class="days" id="days">
+        <label class="check"><input type="checkbox" data-day="0"> Sun</label>
+        <label class="check"><input type="checkbox" data-day="1"> Mon</label>
+        <label class="check"><input type="checkbox" data-day="2"> Tue</label>
+        <label class="check"><input type="checkbox" data-day="3"> Wed</label>
+        <label class="check"><input type="checkbox" data-day="4"> Thu</label>
+        <label class="check"><input type="checkbox" data-day="5"> Fri</label>
+        <label class="check"><input type="checkbox" data-day="6"> Sat</label>
+      </div>
+
+      <div class="field">
+        <label for="scheduleTimes">Times (24-hour, comma separated)</label>
+        <input id="scheduleTimes" type="text" placeholder="09:00, 13:30, 22:00">
+      </div>
+    </section>
+
+    <!-- ===== Lock screen look ===== -->
+    <section>
+      <h2>Lock screen</h2>
+
+      <div class="field">
+        <label for="theme">Theme</label>
+        <select id="theme">
+          <option value="dark">Dark</option>
+          <option value="light">Light</option>
+          <option value="auto">Match system</option>
+        </select>
+      </div>
+
+      <label class="check">
+        <input type="checkbox" id="showClock">
+        Show clock and date
+      </label>
+
+      <div class="field">
+        <label for="lockTitle">Title (optional)</label>
+        <input id="lockTitle" type="text" maxlength="40" placeholder="Profile Locked">
+      </div>
+
+      <div class="field">
+        <label for="logoFile">Custom logo (optional)</label>
+        <input id="logoFile" type="file" accept="image/png,image/jpeg,image/webp,image/svg+xml">
+      </div>
+
+      <div class="logo-row">
+        <img id="logoPreview" class="logo-preview" alt="Logo preview" hidden>
+        <button id="removeLogo" class="secondary small" type="button" hidden>Remove logo</button>
+      </div>
+    </section>
+
+    <!-- ===== Session ===== -->
+    <section>
+      <h2>Tab &amp; session protection</h2>
+
+      <label class="check">
+        <input type="checkbox" id="saveSession">
+        Keep a backup of open tabs (not Incognito) for crash recovery
+      </label>
+
+      <p class="muted" id="snapshotInfo"></p>
+
+      <button id="restoreRecovery" class="secondary" type="button">Restore tabs from before the last Chrome start</button>
+      <button id="restoreLatest" class="secondary" type="button">Restore tabs from the latest backup</button>
+      <p id="restoreMessage" class="message" role="status" aria-live="polite"></p>
+
+      <p class="muted">
+        Tabs that are already open are skipped, so nothing is opened twice.
+      </p>
+    </section>
+
+    <!-- ===== Save ===== -->
+    <section>
+      <button id="saveSettings" class="primary">Save settings</button>
+      <p id="settingsMessage" class="message" role="status" aria-live="polite"></p>
+      <button id="shortcutBtn" class="secondary" type="button">Change keyboard shortcut</button>
+    </section>
+
+    <!-- ===== Log ===== -->
+    <section>
+      <h2>Activity log</h2>
+      <p class="muted">Stored only on this computer. Newest first.</p>
+      <ul id="log" class="log"></ul>
+      <button id="clearLog" class="secondary" type="button">Clear log</button>
+    </section>
+
+    <div class="warning">
+      This extension is a deterrent, not a complete security boundary. A person with
+      access to this computer account may still be able to bypass or disable it.
+      For Incognito windows, enable “Allow in Incognito” for this extension.
+    </div>
+  </main>
+
+  <script src="common.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

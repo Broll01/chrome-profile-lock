@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Profile Lock</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="popup">
+  <div class="brand">
+    <div class="logo" aria-hidden="true">🔒</div>
+    <div>
+      <h1>Profile Lock</h1>
+      <p class="muted" id="subtitle">Checking status…</p>
+    </div>
+  </div>
+
+  <div class="status" id="status" role="status">Checking status…</div>
+
+  <button id="lockBtn" class="primary">Lock Profile</button>
+
+  <label class="check toggle" id="autoToggleRow">
+    <input type="checkbox" id="autoToggle">
+    <span id="autoLabel">Auto-lock</span>
+  </label>
+
+  <button id="settingsBtn" class="secondary">PIN &amp; Settings</button>
+
+  <p class="hint" id="shortcutHint"></p>
+
+  <script src="common.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

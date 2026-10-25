@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Profile Locked</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="lock-page">
+  <main class="lock-card" id="card">
+    <img id="logo" class="lock-logo" alt="" hidden>
+    <div id="defaultIcon" class="lock-icon" aria-hidden="true">🔐</div>
+
+    <div id="clockBox" class="clock-box" hidden>
+      <div id="clock" class="clock"></div>
+      <div id="date" class="date"></div>
+    </div>
+
+    <h1 id="title">Profile Locked</h1>
+    <p id="prompt" class="muted">Enter your PIN to continue.</p>
+
+    <form id="unlockForm" autocomplete="off">
+      <div class="field" id="pinField">
+        <label for="pin">PIN</label>
+        <div class="input-group">
+          <input id="pin" type="password" inputmode="numeric" maxlength="12"
+                 autocomplete="off" placeholder="PIN">
+          <button type="button" class="reveal" data-target="pin"
+                  aria-label="Show" aria-pressed="false">👁</button>
+        </div>
+      </div>
+
+      <div class="field" id="passwordField" hidden>
+        <label for="password">Password</label>
+        <div class="input-group">
+          <input id="password" type="password" maxlength="128"
+                 autocomplete="off" placeholder="Password">
+          <button type="button" class="reveal" data-target="password"
+                  aria-label="Show" aria-pressed="false">👁</button>
+        </div>
+      </div>
+
+      <button id="submit" class="primary" type="submit">Unlock</button>
+    </form>
+
+    <p id="error" class="error" role="alert" aria-live="polite"></p>
+    <p id="attempts" class="attempts"></p>
+
+    <div class="footnote">This Chrome profile is protected.</div>
+  </main>
+
+  <script src="common.js"></script>
+  <script src="lock.js"></script>
+</body>
+</html>
